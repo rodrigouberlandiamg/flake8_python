@@ -6,6 +6,7 @@ pypinstall flake8
 flake8.exe .\main.py
 flake8.exe --select F401 .\main.py
 flake8.exe --ignore F401 .\main.py
+git config --bool flake8.strict true -> Bloqueia subir para o GIT.
 '''
 
 
