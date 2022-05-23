@@ -13,7 +13,8 @@ git config --bool flake8.strict true -> Bloqueia subir para o GIT.
 # from fila_normal import FilaNormal
 # from fila_prioritaria import FilaPrioritaria
 from fabrica_fila import FabricaFila
-
+from estatistica_resumida import EstatisticaResumida
+from estatistica_detalhada import EstatisticaDetalhada
 
 if __name__ == '__main__':
     # fila_teste = FilaNormal()
@@ -32,10 +33,13 @@ if __name__ == '__main__':
     # print(fila_teste2.chama_cliente(2))
     # print(fila_teste2.estatistica('19/05/2022',1,'detail'))
 
-    teste_fabrica = FabricaFila.pega_fila('normal')
+    teste_fabrica = FabricaFila.pega_fila('prioritaria')
+    teste_fabrica.atualiza_fila()
     teste_fabrica.atualiza_fila()
     teste_fabrica.atualiza_fila()
     teste_fabrica.atualiza_fila()
     print(teste_fabrica.chama_cliente(10))
     print(teste_fabrica.chama_cliente(2))
-    # print(teste_fabrica.estatistica('19/05/2022',1,'detail'))
+    print(teste_fabrica.chama_cliente(4))
+    print(teste_fabrica.chama_cliente(99))
+    print(teste_fabrica.estatistica('19/05/2022',1,EstatisticaDetalhada))
