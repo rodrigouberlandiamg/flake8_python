@@ -1,4 +1,6 @@
-class FilaBase():
+import abc
+
+class FilaBase(metaclass=abc.ABCMeta):
     codigo: int = 0
     fila: list = []
     clientes_atendidos: list = []
@@ -9,3 +11,20 @@ class FilaBase():
             self.codigo = 0
         else:
             self.codigo += 1
+
+    def insere_cliente(self):
+        self.fila.append(self.senha_atual)
+
+    # Métodos obrigatórios abstract
+    @abc.abstractmethod
+    def gera_senha_atual(self):
+        ...
+
+    def atualiza_fila(self):
+        self.reseta_fila()
+        self.gera_senha_atual()
+        self.fila.append(self.senha_atual)
+
+    @abc.abstractmethod
+    def chama_cliente(self, caixa: int):
+        ...
